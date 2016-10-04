@@ -1,8 +1,9 @@
 
-// declarationdu module user
-var userModule = angular.module('userModule', ['ngResource']);
+// declaration du module user
+var userModule = angular.module('userModule', []);
 
-//documentation : https://docs.angularjs.org/api/ngResource/service/$resource
+// creation d'une factory utilisée pour les déclarations de urls / méthodes REST
+// documentation : https://docs.angularjs.org/api/ngResource/service/$resource
 var userFactory = userModule.factory('userFactory', ['$resource', function($resource) {
   return $resource('http://mtpcfdemo.cfapps.io/user/:userId', 
 		  {userId : '@userId'}, 
@@ -14,26 +15,30 @@ var userFactory = userModule.factory('userFactory', ['$resource', function($reso
 }]);
 
 
-
-
 // declaration du controller userController
 userModule.controller('userController', ['$scope', 'userFactory', function ($scope, userFactory) {
-  $scope.userList = userFactory.query();
+	
+	// la liste des utilisateurs
+	$scope.userList = userFactory.query();
 
-  $scope.sortColumn =   'name';
+	// le parametre utilisé pour les tris
+	$scope.sortColumn =   'name';
   
-  $scope.restCreateActionMessage = '';
-  $scope.restDeleteActionMessage = '';
+	// message sur une action de création
+	$scope.restCreateActionMessage = '';
+	// message sur une action de suppression
+	$scope.restDeleteActionMessage = '';
 
-  $scope.newuser = {
-	userId:"",
-    name:"",
-    firstName:"",
-    showDel:false
-  };  
+	// initialisation de l'"object" nouvel utilisateur
+	$scope.newuser = {
+		userId:"",
+		name:"",
+		firstName:"",
+		showDel:false
+	};  
 
-  // methods
-  $scope.addUser = function (user) {
+	// méthode d'ajout d'un utilisateur
+	$scope.addUser = function (user) {
 	  userFactory.save(user).$promise.then(function(data) {
 	  	  $scope.userList = userFactory.query();
 	      // we reinit the new user attributes
