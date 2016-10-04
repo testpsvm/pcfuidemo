@@ -30,9 +30,7 @@ userModule.controller('userController', ['$scope', 'userFactory', function ($sco
     name:"",
     firstName:"",
     showDel:false
-  };
-
-  
+  };  
 
   // methods
   $scope.addUser = function (user) {
