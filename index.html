@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html ng-app="pcfuidemo">
 <head>
- <script src="./lib/angular.1.5.8.min.js"></script>
- <script src="./lib/angular-resource.min.js"></script>
- <script src="./app.js"></script>
- <script src="./user/user.js"></script>
+<script src="./lib/angular.1.5.8.min.js"></script>
+<script src="./lib/angular-resource.min.js"></script>
+<script src="./app.js"></script>
+<script src="./user/user.js"></script>
 
- <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="./app.css">
 </head>
 <body>
-  <center><h2>User CRUD</h2></center>
-  <div class="panel-group" ng-controller='userController'>
-    <div class="panel panel-default">
-      {{restActionMessage}}
-        <div class="panel-heading"><h4>User List</h4></div>
+	<center>
+		<h2>User CRUD</h2>
+	</center>
+	<div class="panel-group" ng-controller='userController'>
 
-        <div class="panel-body">
-          <table class="table table-striped table-condensed" >
-            <tr ng-repeat="user in userList | orderBy : 'name'"
-                ng-mouseover="user.showDel=true"
-                ng-mouseleave="user.showDel=false">
-              <td>{{user.userId}}</td>
-              <td>{{user.name}}</td>
-              <td>{{user.firstName}}</td>
-              <td>
-                <span class="glyphicon glyphicon-remove"
-                      ng-click="removeUser(user)"
-                      ng-show="user.showDel"
-                      ng-hide="!user.showDel"></span>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>User Create</h4>
+			</div>
+			<div class="panel-body">
+				<div class="form-group form-group-sm">
+					<form name="createForm">
+						<label class="col-sm-1 control-label" for="name">Name:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" ng-model='newuser.name'
+								ng-required="true" id="name">
+						</div>
+						<label class="col-sm-1 control-label" for="firstName">First
+							Name:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control"
+								ng-model='newuser.firstName' ng-required="true" id="firstName">
+						</div>
+						<button class="btn btn-info col-sm-1" ng-click="addUser(newuser)"
+							ng-disabled="createForm.$invalid" style="cursor: pointer;">Add
+						</button>
+					</form>
+				</div>
+				<i><center>{{restCreateActionMessage}}</center></i>
+			</div>
 
-              </td>
-            </tr>
-          </table>
-        </div>
-    </div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>User List</h4>
+			</div>
+
+			<div class="panel-body">
+			<center>
+				<table class="table table-striped table-condensed" style="width: 50%">
+					<tr>
+						<th style="width: 5%; cursor: pointer; " ng-click="sortColumn='userId'">User Id</th>
+						<th style="width: 10%; cursor: pointer; " ng-click="sortColumn='name'">Name</th>
+						<th style="width: 10%; cursor: pointer; " ng-click="sortColumn='firstName'">First name</th>
+						<th style="width: 5%; cursor: pointer; "></th>
+					</tr>
+					<tr ng-repeat="user in userList | orderBy : sortColumn"
+						ng-mouseover="user.showDel=true"
+						ng-mouseleave="user.showDel=false">
+						<td>{{user.userId}}</td>
+						<td>{{user.name}}</td>
+						<td>{{user.firstName}}</td>
+						<td><span class="glyphicon glyphicon-remove"
+							style="cursor: pointer;" ng-click="removeUser(user)"
+							ng-show="user.showDel" ng-hide="!user.showDel"></span></td>
+					</tr>
+				</table>
+				</center>
+			</div>
+			<i><center>{{restDeleteActionMessage}}</center></i>
+		</div>
 
 
-    <div class="panel panel-default">
-        <div class="panel-heading"><h4>User Create</h4></div>
-            <div class="panel-body">
-              <div class="form-group form-group-sm">
-                <label class="col-sm-1 control-label" for="name">Name:</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" ng-model='newuser.name' id="name">
-                </div>
-                <label class="col-sm-1 control-label" for="firstName">First Name:</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" ng-model='newuser.firstName' id="firstName">
-                </div>
-                <button class="btn btn-info col-sm-1" ng-click="addUser(newuser)">Add user</button>
-              </div>
-            </div>
 
-    </div>
-
-  </div>
+	</div>
 
 
 

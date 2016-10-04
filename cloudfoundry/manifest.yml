@@ -1,0 +1,8 @@
+---
+applications:
+- name: pcfuidemo
+  memory: 512M
+  buildpack: staticfile_buildpack
+  domain: cfapps.io
+  hosts:
+  - mtpcfuidemo
