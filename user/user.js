@@ -2,9 +2,15 @@
 // declarationdu module user
 var userModule = angular.module('userModule', ['ngResource']);
 
-
+//documentation : https://docs.angularjs.org/api/ngResource/service/$resource
 var userFactory = userModule.factory('userFactory', ['$resource', function($resource) {
-  return $resource('http://mtpcfdemo.cfapps.io/user/:userId', {userId : '@userId'});
+  return $resource('http://mtpcfdemo.cfapps.io/user/:userId', 
+		  {userId : '@userId'}, 
+		  {
+			  generateUsers: {method:'GET', url:'http://mtpcfdemo.cfapps.io/user/insertDemo', isArray:true},
+			  deleteAll: {method:'DELETE', url:'http://mtpcfdemo.cfapps.io/user'}
+		  }
+  );
 }]);
 
 
@@ -12,7 +18,7 @@ var userFactory = userModule.factory('userFactory', ['$resource', function($reso
 
 // declaration du controller userController
 userModule.controller('userController', ['$scope', 'userFactory', function ($scope, userFactory) {
-  $scope.userList =   userFactory.query();
+  $scope.userList = userFactory.query();
 
   $scope.sortColumn =   'name';
   
@@ -48,6 +54,26 @@ userModule.controller('userController', ['$scope', 'userFactory', function ($sco
 	      $scope.userList = userFactory.query();
 	      $scope.restCreateActionMessage = '';
 	      $scope.restDeleteActionMessage = data.message;
+      });
+  };
+  
+  // generate test data
+  $scope.generateUsers = function () {
+	  // call the delete remote service
+	  userFactory.generateUsers().$promise.then(function(data) {
+	      $scope.userList = userFactory.query();
+	      $scope.restCreateActionMessage = 'Generation successful';
+	      $scope.restDeleteActionMessage = '';
+      });
+  };
+  
+  // delete all data
+  $scope.deleteAllUsers = function () {
+	  // call the delete remote service
+	  userFactory.deleteAll().$promise.then(function(data) {
+	      $scope.userList = userFactory.query();
+	      $scope.restCreateActionMessage = '';
+	      $scope.restDeleteActionMessage = 'All users have been removed';
       });
   };
 
