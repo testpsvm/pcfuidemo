@@ -7,6 +7,6 @@ var userFactory = userModule.factory('userFactory', ['$resource', function($reso
 		  {
 			  generateUsers: {method:'GET', url:'http://mtpcfdemo.cfapps.io/user/insertDemo', isArray:true},
 			  deleteAll: {method:'DELETE', url:'http://mtpcfdemo.cfapps.io/user'}
-		  }
+	  }
   );
 }]);
