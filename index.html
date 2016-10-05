@@ -14,52 +14,55 @@
 <link rel="stylesheet" type="text/css" href="./app.css">
 </head>
 <body>
-	<center>
-		<h2>User CRUD</h2>
-	</center>
-	<div class="panel-group" ng-controller='userController'>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4>User Create</h4>
-			</div>
-			<div class="panel-body">
-				<div class="form-group form-group-sm">
-					<form name="createForm">
-						<label class="col-sm-1 control-label" for="name">Name:</label>
-						<div class="col-sm-2">
-							<input type="text" class="form-control" ng-model='newuser.name'
-								ng-required="true" id="name">
-						</div>
-						<label class="col-sm-1 control-label" for="firstName">First
-							Name:</label>
-						<div class="col-sm-2">
-							<input type="text" class="form-control"
-								ng-model='newuser.firstName' ng-required="true" id="firstName">
-						</div>
-						<button class="btn btn-info  btn-sm col-sm-1" ng-click="addUser(newuser)"
-							ng-disabled="createForm.$invalid" style="cursor: pointer;">Add
-						</button>
-					</form>
-					<button class="btn btn-info  btn-sm col-sm-1" ng-click="generateUsers()"
-						style="cursor: pointer;">Generate Users</button>
-					<button class="btn btn-info  btn-sm col-sm-1" ng-click="deleteAllUsers()"
-						style="cursor: pointer;">Delete All Users</button>
-				</div>
-				<i><center>{{restCreateActionMessage}}</center></i>
-			</div>
-
+	<div style="margin-left: 10%; margin-right: 10%;">
+		<div class="halfsized">
+			<h2 class="text-center">User CRUD</h2>
 		</div>
+		<div class="panel-group" ng-controller='userController'>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4>User List</h4>
+			<div class="panel panel-default halfsized">
+				<div class="panel-heading">
+					<h4>User Create</h4>
+				</div>
+				<div class="panel-body">
+					<div class="form-group form-group-sm">
+						<form name="createForm" novalidate >
+							<label class="col-sm-1 control-label" for="name">Name:</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" ng-model='newuser.name'
+									ng-required="true" id="name">
+							</div>
+							<label class="col-sm-1 control-label" for="firstName">First
+								Name:</label>
+							<div class="col-sm-2">
+								<input type="text" class="form-control"
+									ng-model='newuser.firstName' ng-required="true" id="firstName">
+							</div>
+							<div class="btn-group">
+								<button class="btn btn-default  btn-sm" ng-click="addUser(newuser)"
+									ng-disabled="createForm.$invalid" style="cursor: pointer;">Add</button>
+								<button class="btn btn-default  btn-sm" ng-click="generateUsers()"
+									style="cursor: pointer;">Generate Users</button>
+								<button class="btn btn-default  btn-sm" ng-click="deleteAllUsers()"
+									style="cursor: pointer;">Delete All Users</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+				<div class="panel-footer">
+					<i>{{restCreateActionMessage}}</i>
+				</div>
 			</div>
 
-			<div class="panel-body">
-				<center>
-					<table class="table table-striped table-condensed"
-						style="width: 50%">
+			<div class="panel panel-default halfsized">
+				<div class="panel-heading">
+					<h4>User List</h4>
+				</div>
+
+				<div class="panel-body">
+
+					<table class="table table-striped table-condensed">
 						<tr>
 							<th style="width: 5%; cursor: pointer;"
 								ng-click="sortColumn='userId'">User Id</th>
@@ -75,18 +78,21 @@
 							<td>{{user.userId}}</td>
 							<td>{{user.name}}</td>
 							<td>{{user.firstName}}</td>
-							<td><span class="glyphicon glyphicon-remove"
+							<td style="text-align: right;"><span class="glyphicon glyphicon-remove"
 								style="cursor: pointer;" ng-click="removeUser(user)"
 								ng-show="user.showDel" ng-hide="!user.showDel"></span></td>
 						</tr>
 					</table>
-				</center>
+
+				</div>
+				<div class="panel-footer">
+					<i>{{restDeleteActionMessage}}</i>
+				</div>
 			</div>
-			<i><center>{{restDeleteActionMessage}}</center></i>
+
+
+
 		</div>
-
-
-
 	</div>
 
 

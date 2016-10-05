@@ -1,1 +1,14 @@
 
+table{
+	width: 80% !important;
+	margin: auto;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.halfsized{
+	width: 50% !important;
+}
+
