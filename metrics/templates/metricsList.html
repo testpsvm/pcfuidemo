@@ -1,0 +1,15 @@
+<button class="btn btn-default  btn-sm" ng-click="updateMetrics()"
+	style="cursor: pointer;">Update metrics</button>
+<table class="table table-striped table-condensed">
+	<tr>
+		<th style="width: 10%; cursor: pointer;"
+			ng-click="metricsSortColumn='key'">Param Name</th>
+		<th style="width: 10%; cursor: pointer;"
+			ng-click="metricsSortColumn='value'">Value</th>
+	</tr>
+
+	<tr ng-repeat="metrics in metricsList | orderBy : metricsSortColumn">
+		<td>{{metrics.key}}</td>
+		<td>{{metrics.value}}</td>
+	</tr>
+</table>

@@ -1,0 +1,21 @@
+<form name="createForm" novalidate>
+	<label class="col-sm-1 control-label" for="name">Name:</label>
+	<div class="col-sm-2">
+		<input type="text" class="form-control" ng-model='newtraining.title'
+			ng-required="true" id="title">
+	</div>
+	<label class="col-sm-1 control-label" for="firstName">First
+		Name:</label>
+	<div class="col-sm-2">
+		<input type="text" class="form-control" ng-model='newtraining.shortTitle'
+			ng-required="true" id="shortTitle">
+	</div>
+	<div class="btn-group">
+		<button class="btn btn-default  btn-sm" ng-click="addTraining(newtraining)"
+			ng-disabled="createForm.$invalid" style="cursor: pointer;">Add</button>
+		<button class="btn btn-default  btn-sm" ng-click="generateTrainings()"
+			style="cursor: pointer;">Generate Trainings</button>
+		<button class="btn btn-default  btn-sm" ng-click="deleteAllTrainings()"
+			style="cursor: pointer;">Delete All Trainings</button>
+	</div>
+</form>

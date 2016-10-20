@@ -3,11 +3,28 @@
 <head>
 <script src="./lib/angular.1.5.8.min.js"></script>
 <script src="./lib/angular-resource.min.js"></script>
+<script src="./lib/angular-route.1.5.8.min.js"></script>
+
+<script src="./lib/bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 <script src="./app.js"></script>
-<script src="./user/user.module.js"></script>
-<script src="./user/user.config.js"></script>
-<script src="./user/user.factory.js"></script>
-<script src="./user/user.controller.js"></script>
+<script src="./user/scripts/module.js"></script>
+<script src="./user/scripts/config.js"></script>
+<script src="./user/scripts/factory.js"></script>
+<script src="./user/scripts/controller.js"></script>
+<script src="./user/scripts/directive.js"></script>
+
+<script src="./training/scripts/module.js"></script>
+<script src="./training/scripts/config.js"></script>
+<script src="./training/scripts/factory.js"></script>
+<script src="./training/scripts/controller.js"></script>
+<script src="./training/scripts/directive.js"></script>
+
+<script src="./metrics/scripts/module.js"></script>
+<script src="./metrics/scripts/config.js"></script>
+<script src="./metrics/scripts/factory.js"></script>
+<script src="./metrics/scripts/controller.js"></script>
+<script src="./metrics/scripts/directive.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -18,100 +35,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
 <body>
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2 class="text-center">User CRUD</h2>
-		</div>
-	</div>
-	<div class="row">
-
-		<!-- DEFINITION DU CONTROLLER -->
-		<div class="col-xs-8 col-xs-offset-2 panel-group"
-			ng-controller='userController'>
-
-			<!-- PANEL FORMULAIRE CREATION -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>User Create</h4>
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Pcfuidemo</a>
 				</div>
-				<div class="panel-body">
-					<div class="form-group form-group-sm">
-						<form name="createForm" novalidate>
-							<label class="col-sm-1 control-label" for="name">Name:</label>
-							<div class="col-sm-2">
-								<input type="text" class="form-control" ng-model='newuser.name'
-									ng-required="true" id="name">
-							</div>
-							<label class="col-sm-1 control-label" for="firstName">First
-								Name:</label>
-							<div class="col-sm-2">
-								<input type="text" class="form-control"
-									ng-model='newuser.firstName' ng-required="true" id="firstName">
-							</div>
-							<div class="btn-group">
-								<button class="btn btn-default  btn-sm"
-									ng-click="addUser(newuser)" ng-disabled="createForm.$invalid"
-									style="cursor: pointer;">Add</button>
-								<button class="btn btn-default  btn-sm"
-									ng-click="generateUsers()" style="cursor: pointer;">Generate
-									Users</button>
-								<button class="btn btn-default  btn-sm"
-									ng-click="deleteAllUsers()" style="cursor: pointer;">Delete
-									All Users</button>
-							</div>
-						</form>
 
-					</div>
-				</div>
-				<div class="panel-footer">
-					<i>{{restCreateActionMessage}}</i>
-				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#userMain"><i class="fa fa-shield"></i> User</a></li>
+					<li><a href="#trainingMain"><i class="fa fa-comment"></i>
+							Training</a></li>
+					<li><a href="#metricsMain"><i class="fa fa-comment"></i>
+							Metrics</a></li>
+				</ul>
 			</div>
+		</nav>
+	</header>
+	<!-- MAIN CONTENT AND INJECTED VIEWS -->
+	<div id="main">
 
-			<!-- PANEL LISTE UTILISATEURS -->
-			<div class="panel panel-default ">
-				<div class="panel-heading">
-					<h4>User List</h4>
-				</div>
+		<!-- angular templating -->
+		<!-- this is where content will be injected -->
+		<div ng-view></div>
 
-				<div class="panel-body">
-					<table class="table table-striped table-condensed">
-						<!-- HEADER -->
-						<tr>
-							<th style="width: 5%; cursor: pointer;"
-								ng-click="sortColumn='userId'">User Id</th>
-							<th style="width: 10%; cursor: pointer;"
-								ng-click="sortColumn='name'">Name</th>
-							<th style="width: 10%; cursor: pointer;"
-								ng-click="sortColumn='firstName'">First Name</th>
-							<th style="width: 5%; cursor: pointer;"></th>
-						</tr>
-						<!-- NG-REPEAT -->
-						<tr ng-repeat="user in userList | orderBy : sortColumn"
-							ng-mouseover="user.showDel=true"
-							ng-mouseleave="user.showDel=false">
-							<td>{{user.userId}}</td>
-							<td>{{user.name}}</td>
-							<td>{{user.firstName}}</td>
-							<td style="text-align: right;"><span
-								class="glyphicon glyphicon-remove" style="cursor: pointer;"
-								ng-click="removeUser(user)" ng-show="user.showDel"
-								ng-hide="!user.showDel"></span></td>
-						</tr>
-					</table>
-
-				</div>
-				<div class="panel-footer">
-					<i>{{restDeleteActionMessage}}</i>
-				</div>
-			</div>
-
-
-
-		</div>
 	</div>
-
-
-
 </body>
 </html>

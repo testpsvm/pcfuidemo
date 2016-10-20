@@ -1,0 +1,15 @@
+<button class="btn btn-default  btn-sm" ng-click="updateHealth()"
+	style="cursor: pointer;">Update health</button>
+<table class="table table-striped table-condensed">
+	<tr>
+		<th style="width: 10%; cursor: pointer;"
+			ng-click="healthSortColumn='key'">Param Name</th>
+		<th style="width: 10%; cursor: pointer;"
+			ng-click="healthSortColumn='value'">Value</th>
+	</tr>
+
+	<tr ng-repeat="health in healthList | orderBy : healthSortColumn='key'">
+		<td>{{health.key}}</td>
+		<td>{{health.value}}</td>
+	</tr>
+</table>

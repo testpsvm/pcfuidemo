@@ -1,0 +1,42 @@
+
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2">
+		<h2 class="text-center">User CRUD</h2>
+	</div>
+</div>
+<div class="row">
+	<!-- DEFINITION DU CONTROLLER -->
+	<div class="col-xs-8 col-xs-offset-2 panel-group"
+		ng-controller='userController'>
+
+		<!-- PANEL FORMULAIRE CREATION -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>User Create</h4>
+			</div>
+			<div class="panel-body">
+				<div class="form-group form-group-sm">
+					<usercreateform />
+				</div>
+			</div>
+			<div class="panel-footer">
+				<i>{{restCreateActionMessage}}</i>
+			</div>
+		</div>
+
+		<!-- PANEL LISTE UTILISATEURS -->
+		<div class="panel panel-default ">
+			<div class="panel-heading">
+				<h4>User List</h4>
+			</div>
+
+			<div class="panel-body">
+				<userlist />
+
+			</div>
+			<div class="panel-footer">
+				<i>{{restDeleteActionMessage}}</i>
+			</div>
+		</div>
+	</div>
+</div>

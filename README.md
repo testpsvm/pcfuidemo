@@ -6,7 +6,19 @@
 
 ## How to start
 
-## How to deploy
+
+#### Create a module
+
+#### Create a controller
+
+#### Create a factory
+
+#### Create a directive
+
+#### Create a config
+
+
+## How to deploy to cloudfoundry
 
 Prerequisite : you must have a pivotal account
 

@@ -1,0 +1,19 @@
+<table class="table table-striped table-condensed">
+	<tr>
+		<th style="width: 5%; cursor: pointer;" ng-click="sortColumn='userId'">Id</th>
+		<th style="width: 10%; cursor: pointer;" ng-click="sortColumn='name'">Name</th>
+		<th style="width: 10%; cursor: pointer;"
+			ng-click="sortColumn='firstName'">First Name</th>
+		<th style="width: 5%; cursor: pointer;"></th>
+	</tr>
+	<tr ng-repeat="user in userList | orderBy : sortColumn"
+		ng-mouseover="user.showDel=true" ng-mouseleave="user.showDel=false">
+		<td>{{user.userId}}</td>
+		<td>{{user.name}}</td>
+		<td>{{user.firstName}}</td>
+		<td style="text-align: right;"><span
+			class="glyphicon glyphicon-remove" style="cursor: pointer;"
+			ng-click="removeUser(user)" ng-show="user.showDel"
+			ng-hide="!user.showDel"></span></td>
+	</tr>
+</table>
