@@ -30,9 +30,9 @@ Prerequisite : you must have a pivotal account
 
 - Select the space you want to deploy to
 
-- `cd ..`
-
 - `cf push -b staticfile_buildpack pcfuidemo`
+
+Remark : you may have to add -m 64M on test environnement if you don't have enough memory
 
 
 Test the application [pcfuidemo](http://pcfuidemo.cfapps.io/pcfuidemo/)
