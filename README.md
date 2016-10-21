@@ -32,7 +32,7 @@ Prerequisite : you must have a pivotal account
 
 - `cf push -b staticfile_buildpack pcfuidemo`
 
-Remark : you may have to add `-m 64M` on test environnement if you don't have enough memory
+Remark : you may have to add `-m 64M` on test environment if you don't have enough memory
 
 
 Test the application [pcfuidemo](http://pcfuidemo.cfapps.io/pcfuidemo/)
