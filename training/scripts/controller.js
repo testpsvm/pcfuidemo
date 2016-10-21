@@ -26,8 +26,9 @@ trainingModule.controller('trainingController', ['$scope', 'trainingFactory', fu
 		trainingFactory.save(training).$promise.then(function(data) {
 	  	  $scope.trainingList = trainingFactory.query();
 	      // we reinit the new training attributes
-		  $scope.newtraining.name= '';
-		  $scope.newtraining.firstName= '';
+		  $scope.newtraining.id= '';
+		  $scope.newtraining.title= '';
+		  $scope.newtraining.shortTitle= '';
 		  $scope.newtraining.showDel=false;
 		  $scope.restCreateActionMessage = 'Creation successful';
 	      $scope.restDeleteActionMessage = '';
