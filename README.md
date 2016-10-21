@@ -24,7 +24,7 @@ Prerequisite : you must have a pivotal account
 
 - Go under the `pcfuidemo` root folder.
 
-- Connect to cloud foundry using `cf login`
+- Connect to cloud foundry using `cf login -a https://api.run.pivotal.io`
 
 - Check that `staticfile_buildpack` is installed
 
@@ -32,7 +32,7 @@ Prerequisite : you must have a pivotal account
 
 - `cf push -b staticfile_buildpack pcfuidemo`
 
-Remark : you may have to add `-m 64M` on test environment if you don't have enough memory
+Remark : you may have to add `-m 64M` on test environment if you don't have enough memory and `-k 256M` for disk space
 
 
 Test the application [pcfuidemo](http://pcfuidemo.cfapps.io/pcfuidemo/)
