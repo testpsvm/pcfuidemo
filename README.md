@@ -22,13 +22,15 @@
 
 Prerequisite : you must have a pivotal account
 
-- Go under the `pcdfuidemo` root folder.
+- Go under the `pcfuidemo` root folder.
 
 - Connect to cloud foundry using `cf login`
 
 - Check that `staticfile_buildpack` is installed
 
 - Select the space you want to deploy to
+
+- `cd ..`
 
 - `cf push -b staticfile_buildpack pcfuidemo`
 
