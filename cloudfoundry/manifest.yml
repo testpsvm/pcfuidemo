@@ -1,7 +1,7 @@
 ---
 applications:
 - name: pcfuidemo
-  memory: 512M
+  memory: 64M
   buildpack: staticfile_buildpack
   domain: cfapps.io
   hosts:
