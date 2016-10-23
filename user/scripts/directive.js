@@ -8,9 +8,4 @@ userModule.directive('userlist', function() {
 		restrict : 'E',
 		templateUrl : 'user/templates/userCreateForm.html'
 	};
-}).directive('usermain', function() {
-	return {
-		restrict : 'E',
-		templateUrl : 'user/templates/userMain.html'
-	};
 })

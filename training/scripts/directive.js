@@ -8,9 +8,4 @@ trainingModule.directive('traininglist', function() {
 		restrict : 'E',
 		templateUrl : 'training/templates/trainingCreateForm.html'
 	};
-}).directive('trainingmain', function() {
-	return {
-		restrict : 'E',
-		templateUrl : 'training/templates/trainingMain.html'
-	};
 })

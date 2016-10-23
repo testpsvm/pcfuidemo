@@ -12,8 +12,14 @@
 		<td>{{user.name}}</td>
 		<td>{{user.firstName}}</td>
 		<td style="text-align: right;"><span
+			class="glyphicon glyphicon-eye-open" style="cursor: pointer;"
+			ng-click="openDetail(user)" ng-show="user.showDel"
+			ng-hide="!user.showDel"></span>
+			<span
 			class="glyphicon glyphicon-remove" style="cursor: pointer;"
 			ng-click="removeUser(user)" ng-show="user.showDel"
-			ng-hide="!user.showDel"></span></td>
+			ng-hide="!user.showDel"></span>
+			</td>
 	</tr>
 </table>
+

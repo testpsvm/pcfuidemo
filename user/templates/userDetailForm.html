@@ -1,0 +1,17 @@
+<form name="updateForm" novalidate>
+	<label class="col-sm-1 control-label" for="name">Name:</label>
+	<div class="col-sm-2">
+		<input type="text" class="form-control" ng-model='detail.name'
+			ng-required="true" id="name">
+	</div>
+	<label class="col-sm-1 control-label" for="firstName">First
+		Name:</label>
+	<div class="col-sm-2">
+		<input type="text" class="form-control" ng-model='detail.firstName'
+			ng-required="true" id="firstName">
+	</div>
+	<div class="btn-group">
+		<button class="btn btn-default  btn-sm" ng-click="saveUser(detail)"
+			ng-disabled="updateForm.$invalid" style="cursor: pointer;">Save</button>
+	</div>
+</form>

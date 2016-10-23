@@ -20,6 +20,15 @@ userModule.controller('userController', ['$scope', 'userFactory', function ($sco
 		firstName:"",
 		showDel:false
 	};  
+	
+	
+	// initialisation de l'"object" detail utilisateur
+	$scope.detail = {
+		userId:"",
+		name:"",
+		firstName:"",
+		showDel:false
+	};
 
 	// méthode d'ajout d'un utilisateur
 	$scope.addUser = function (user) {
@@ -64,5 +73,12 @@ userModule.controller('userController', ['$scope', 'userFactory', function ($sco
       });
   };
 
+  $scope.openDetail = function (user) {
+	  detail = user;
+	  alert('name ' + user.name);
+//	  ngDialog.open({
+//		    template: 'templateId'
+//		});
+  };
 
 }]);
